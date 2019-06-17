@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
+Route::get('/', 'PostController@index')->name('post.index');
+Route::post('/post', 'PostController@store')->name('post.save');
 Route::get('/post/create', 'PostController@create')->name('post.create');
+Route::get('/post/{post}', 'PostController@show')->name('post.show');
 
-Route::get('/post/{post}', 'PostController@index')->name('post.show');
+Route::get('/profile/{user}', 'ProfileController@show')->name('profile.show');
+Route::patch('/profile/{user}', 'ProfileController@update')->name('profile.update');
+Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile.edit');
 
-Route::get('/profile/{user}', 'ProfileController@index')->name('profile.show');
+Route::post('/follow/{user}', 'FollowController@store')->name('follow.save');
