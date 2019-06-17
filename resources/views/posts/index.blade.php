@@ -58,7 +58,13 @@
                         </div>
                         <hr>
                     @endforeach
-                    <span class="pr-5"><strong>{{ Auth::user()->posts->count() }}</strong> Posts</span>
+                    <span class="pr-5"><strong>{{ Auth::user()->posts->count() }}</strong>
+                    @if(Auth::user()->posts->count() == 1)
+                    Post
+                    @else
+                    Posts
+                    @endif
+                    </span>
                     <span class="pr-5"><strong>{{ Auth::user()->profile->following->count() }}</strong>
                     @if(Auth::user()->profile->following->count() == 1)
                     Follower

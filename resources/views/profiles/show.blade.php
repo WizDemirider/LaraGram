@@ -28,7 +28,13 @@
                         </div>
                     </div>
                     <span class="mb-1">{{ $user->name }}</span><br>
-                    <span class="pr-5"><strong>{{ $user->posts->count() }}</strong> Posts</span>
+                    <span class="pr-5"><strong>{{ $user->posts->count() }}</strong>
+                    @if($user->posts->count() == 1)
+                    Post
+                    @else
+                    Posts
+                    @endif
+                    </span>
                     <span class="pr-5"><strong>{{ $user->profile->following->count() }}</strong>
                     @if($user->profile->following->count() == 1)
                     Follower
@@ -36,7 +42,7 @@
                     Followers
                     @endif
                     </span>
-                    <span class="pr-5"><strong>{{ $user->following->count() }}</strong> Following</span><br>
+                    <span class="pr-5"><strong>{{ $user->following->count() }}</strong>Following</span><br>
                     <span>{{ $user->email }}</span><br>
                     <p>
                         {{ $user->profile->bio ?? 'No bio set' }}
